@@ -30,6 +30,7 @@
   },
   "homepage": "https://github.com/SerhiiKoziy",
   "dependencies": {
+    "axios": "^0.14.0",
     "fabric": "^1.6.2",
     "fecha": "^2.3.0",
     "immutable": "^3.8.1",

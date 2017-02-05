@@ -7,29 +7,40 @@ export default function DataReduser(state = INITIAL_STATE, action) {
 
 
 
-    case types.RECEIVE_API_RESULT:
+    case types.USER_COORDINATES:
       return {
         ...state,
-        result:payload,
-        isLoaded: true,
+        coordinates:payload,
+        isFound: true,
+      };
+
+    case types.USER_WEATHER_FROM_COORDINATES:
+      return {
+        ...state,
+        weather:payload,
+        isFound: true,
       };
 
     case types.REQUEST_API_RESULT:
       return {
         ...state,
-        isLoaded: false,
-      };
-    case types.REQUEST_API_RESULT_NEED_NAME:
-      return {
-        ...state,
-        isLoaded: 'needName',
-      };
-    case types.REQUEST_API_RESULT_WAS_LOAD:
-      return {
-        ...state,
-        isLoaded: 'wasLoad',
+        isFound: false,
       };
 
+
+
+    case types.RECEIVE_FORECAST:
+      return {
+        ...state,
+        weatherForecast:payload,
+        forecast: true,
+      };
+
+    case types.REQUEST_FORECAST:
+      return {
+        ...state,
+        forecast: false,
+      };
 
     default:
       return state;

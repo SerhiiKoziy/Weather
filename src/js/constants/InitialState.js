@@ -1,23 +1,17 @@
 export const INITIAL_STATE = {
 
 
-    data: {
-        currentCategory: 'all',
-        categories:['all', 'audiobook', 'ebook', 'movie', 'music', 'musicVideo', 'podcast', 'tvShow', 'shortFilm', 'software'],
-
-        categoriesEntities:{
-            movie:['movieArtist', 'movie'],
-            podcast:['podcastAuthor', 'podcast'],
-            music:['musicArtist', 'musicTrack', 'album', 'musicVideo', 'mix'],
-            musicVideo:['musicArtist', 'musicVideo'],
-            audiobook:['audiobookAuthor', 'audiobook'],
-            shortFilm:['shortFilmArtist', 'shortFilm', 'album', 'musicVideo', 'mix'],
-            tvShow:['tvEpisode', 'tvSeason'],
-            software:['software', 'iPadSoftware', 'macSoftware'],
-            ebook:['ebook'],
-            all:['movie', 'album', 'allArtist', 'podcast', 'musicVideo', 'mix', 'audiobook', 'tvSeason', 'allTrack'],
+    data:{
+        userKeyAPI:{
+            APPID: '8932288cdb827d871a2f1495aae80b44',
         },
-    },
+        coordinates:{
+            lon:0,
+            lat:0
+        },
+        cityIdForForecast:{
+            id: 701
+        }
 
-
+    }
 };
