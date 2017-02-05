@@ -35,8 +35,8 @@ export default class StartPage extends Component {
         let lon = position.coords.longitude;
         console.log(lat, lon);
 
-        this.props.actions.receiveCoordinates({lat, lon})
-        this.props.actions.getWatherToCoordinates1(this.props.data);
+        this.props.actions.receiveCoor({lat, lon})
+        this.props.actions.getWatherToCoor(this.props.data);
 
       })
 

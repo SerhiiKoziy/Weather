@@ -3,35 +3,30 @@ import * as API from '../constants/Api';
 import {push} from 'react-router-redux';
 import axios from 'axios';
 
-
 export function pushRedirect(path) {
     return dispatch => {
         dispatch(push(path))
     }
 }
 
-export function getWatherToCoordinates1(data) {
+export function getWatherToCoor(data) {
   return (dispatch, getState) => {
-    //let coordinates = getState().coordinates;
-    //if(!coordinates) throw new Error('No active activeTestId');
-    //dispatch(requestScore());
     axios.get(API.MAIN_API_URL, {
       params:{
         APPID: '8932288cdb827d871a2f1495aae80b44',
         lat:30.41904,
         lon:50.431292,
-
       }
-
-    } )
+    })
       .then(function (response) {
         console.log('getWatherToCoordinates', response );
-        //const {data} = response;
-        //if(response.error) throw new Error(response.error);
-        //dispatch(receiveScore(data));
+        dispatch(receiveUserWeather(response));
+        if(response.error) throw new Error(response.error);
+
       })
       .catch(function (error) {
-        //alert(error);
+        dispatch(requestWeatherNotFaund());
+        console.log(error);
       });
 
   }
@@ -41,8 +36,6 @@ export function getWatherToCoordinates1(data) {
 export function getWatherToCoordinates(data){
     let {userKeyAPI:{APPID}, coordinates:{lon,lat}} = data;
     return dispatch =>{
-       // dispatch(requestApiResult());
-
             $.ajax({
                 url:API.MAIN_API_URL,
                 data:{APPID, lon, lat},
@@ -73,7 +66,7 @@ export function receiveUserWeather(payload) {
         payload
     };
 }
-export function receiveCoordinates(payload) {
+export function receiveCoor(payload) {
     return {
         type: types.USER_COORDINATES,
         payload
@@ -87,11 +80,11 @@ export function getWatherForecast(data){
 
     $.ajax({
       url:API.FORECAST_API_URL,
-      data:{id},
+      data:{'London', 'us'},
       type:"GET",
       dataType: "jsonp",
       success: function(data, dataType){
-        console.log('data', data);
+        console.log('London', data);
         if(data){
           dispatch(receiveUserForecast(data))
         }else {
